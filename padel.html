@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation de Niveau Padel</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            font-size: 14px;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #28a745;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #result {
+            margin-top: 25px;
+            text-align: center;
+            padding: 20px;
+            background-color: #e9f5eb;
+            border-radius: 8px;
+            border: 1px solid #d4edda;
+        }
+
+        #result h2 {
+            font-size: 20px;
+            color: #155724;
+            margin-bottom: 10px;
+        }
+
+        #level {
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            select {
+                padding: 10px;
+            }
+
+            button {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Évalue ton niveau de Padel 🎾</h1>
+        <form id="padelForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <label>1. Depuis combien de temps joues-tu au padel ?</label>
+                <select id="experience">
+                    <option value="1">Moins de 6 mois</option>
+                    <option value="2">6 mois à 1 an</option>
+                    <option value="3">1 à 3 ans</option>
+                    <option value="4">Plus de 3 ans</option>
+                </select>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <label>2. À quelle fréquence joues-tu ?</label>
+                <select id="frequency">
+                    <option value="1">Une fois par mois ou moins</option>
+                    <option value="2">2 à 3 fois par mois</option>
+                    <option value="3">1 fois par semaine</option>
+                    <option value="4">Plus de 2 fois par semaine</option>
+                </select>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <label>3. Comment évalues-tu ton coup droit ?</label>
+                <select id="forehand">
+                    <option value="1">Débutant (peu de contrôle)</option>
+                    <option value="2">Intermédiaire (contrôle moyen)</option>
+                    <option value="3">Avancé (bon contrôle et précision)</option>
+                    <option value="4">Expert (très précis et puissant)</option>
+                </select>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <label>4. Comment évalues-tu ton revers ?</label>
+                <select id="backhand">
+                    <option value="1">Débutant (peu de contrôle)</option>
+                    <option value="2">Intermédiaire (contrôle moyen)</option>
+                    <option value="3">Avancé (bon contrôle et précision)</option>
+                    <option value="4">Expert (très précis et puissant)</option>
+                </select>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <label>5. Comment évalues-tu tes volées et smashes ?</label>
+                <select id="volleys">
+                    <option value="1">Débutant (difficulté à les exécuter)</option>
+                    <option value="2">Intermédiaire (exécution moyenne)</option>
+                    <option value="3">Avancé (bonne exécution)</option>
+                    <option value="4">Expert (très efficace)</option>
+                </select>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <label>6. Comment évalues-tu ton placement sur le terrain ?</label>
+                <select id="positioning">
+                    <option value="1">Débutant (souvent mal placé)</option>
+                    <option value="2">Intermédiaire (placement correct)</option>
+                    <option value="3">Avancé (bon placement)</option>
+                    <option value="4">Expert (placement optimal)</option>
+                </select>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <label>7. Comment évalues-tu ta communication avec ton partenaire ?</label>
+                <select id="communication">
+                    <option value="1">Débutant (peu de communication)</option>
+                    <option value="2">Intermédiaire (communication occasionnelle)</option>
+                    <option value="3">Avancé (bonne communication)</option>
+                    <option value="4">Expert (communication constante et efficace)</option>
+                </select>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <label>8. Comment évalues-tu ta condition physique ?</label>
+                <select id="fitness">
+                    <option value="1">Faible (je me fatigue rapidement)</option>
+                    <option value="2">Moyenne (je tiens bien pendant un match)</option>
+                    <option value="3">Bonne (je suis endurant)</option>
+                    <option value="4">Excellente (je suis très endurant)</option>
+                </select>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <label>9. À quel niveau joues-tu habituellement ?</label>
+                <select id="competition">
+                    <option value="1">Débutant (je joue pour le plaisir)</option>
+                    <option value="2">Intermédiaire (je joue en club ou en ligue amateur)</option>
+                    <option value="3">Avancé (je participe à des tournois régionaux)</option>
+                    <option value="4">Expert (je participe à des tournois nationaux)</option>
+                </select>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <label>10. Comment évalues-tu ta capacité à anticiper les coups de l'adversaire ?</label>
+                <select id="anticipation">
+                    <option value="1">Débutant (je ne les anticipe pas)</option>
+                    <option value="2">Intermédiaire (je les anticipe parfois)</option>
+                    <option value="3">Avancé (je les anticipe souvent)</option>
+                    <option value="4">Expert (je les anticipe presque toujours)</option>
+                </select>
+            </div>
+
+            <button type="submit">Calculer mon niveau</button>
+        </form>
+
+        <!-- Résultat -->
+        <div id="result" class="hidden">
+            <h2>Ton niveau de Padel est : <span id="level"></span>/10</h2>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('padelForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Récupérer les valeurs des réponses
+            const experience = parseInt(document.getElementById('experience').value);
+            const frequency = parseInt(document.getElementById('frequency').value);
+            const forehand = parseInt(document.getElementById('forehand').value);
+            const backhand = parseInt(document.getElementById('backhand').value);
+            const volleys = parseInt(document.getElementById('volleys').value);
+            const positioning = parseInt(document.getElementById('positioning').value);
+            const communication = parseInt(document.getElementById('communication').value);
+            const fitness = parseInt(document.getElementById('fitness').value);
+            const competition = parseInt(document.getElementById('competition').value);
+            const anticipation = parseInt(document.getElementById('anticipation').value);
+
+            // Calculer le score total
+            const totalScore = experience + frequency + forehand + backhand + volleys + positioning + communication + fitness + competition + anticipation;
+
+            // Convertir le score en niveau sur 10
+            const level = Math.round((totalScore / 40) * 10); // 40 = score max pour 10 questions
+
+            // Afficher le résultat
+            document.getElementById('level').textContent = level;
+            document.getElementById('result').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
